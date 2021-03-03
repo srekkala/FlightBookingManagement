@@ -1,0 +1,25 @@
+schema{
+	query:Query
+	mutation:Mutation
+}
+
+
+type Query {
+	getFlight(id:Int):Flight
+	getAllFlights:[Flight]
+}
+
+type Mutation{
+	addFlight(id:Int,flightFrom:String,flightTo:String,date:String,fare:Int,seatCapacity:Int) : Flight
+	updateSeatCapacity(id:Int,seatCapacity:Int):Flight
+	deleteFlight(id:Int):String
+}
+
+type Flight {
+	id:Int
+	flightFrom:String
+	flightTo:String
+	date:String
+	fare:Int
+	seatCapacity:Int
+}
