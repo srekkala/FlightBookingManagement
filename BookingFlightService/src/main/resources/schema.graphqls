@@ -1,0 +1,41 @@
+schema{
+	query:Query
+	mutation:Mutation
+}
+
+type Query {
+	getBooking(bookingId:String):Booking
+	getPassenger(bookingId:String):[Passenger]
+}
+
+type Mutation{
+	addBooking(id:Int,bookingId:String,userId:String,noOfPassengers:Int) : String
+	addPassengers(passengerId:String,firstName:String,lastName:String,gender:String,bookingId:String):String
+}
+
+type Flight {
+	id:Int
+	flightFrom:String
+	flightTo:String
+	date:String
+	fare:Int
+	seatCapacity:Int
+}
+
+type Booking{
+	bookingId:String
+	noOfPassengers:Int
+	passenger:[Passenger]
+	flight:Flight
+}
+
+type Passenger{
+	passengerId:String
+	firstName:String
+	lastName:String
+	gender:String
+	bookingId:String
+}
+
+
+
