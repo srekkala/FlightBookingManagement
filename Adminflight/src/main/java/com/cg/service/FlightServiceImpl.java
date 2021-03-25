@@ -33,9 +33,9 @@ public class FlightServiceImpl implements FlightService{
 		 */
 		@Override
 		public String deleteFlight(int id) {
-			boolean isExist = flightRepo.existsById(id);
-			if(isExist) {
-				flightRepo.deleteById(id);
+			Flight isExist = flightRepo.findFlightById(id);
+			if(isExist!=null) {
+				flightRepo.deleteFlight(id);
 				return "Flight with id:"+id+"deleted succesfully!";
 			}
 			else {
@@ -62,8 +62,8 @@ public class FlightServiceImpl implements FlightService{
 		 */
 		@Override
 		public Flight updateseatCapacity(int id, int seatCapacity) {
-			if(flightRepo.findById(id) != null) {
-				Flight flightRes=flightRepo.findById(id).get();
+			if(flightRepo.findFlightById(id) != null) {
+				Flight flightRes=flightRepo.findFlightById(id);
 				flightRes.setSeatCapacity(seatCapacity);
 				flightRepo.save(flightRes);
 				return flightRes;

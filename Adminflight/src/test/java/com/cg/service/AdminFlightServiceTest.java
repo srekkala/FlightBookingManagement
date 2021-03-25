@@ -71,7 +71,7 @@ public class AdminFlightServiceTest {
 		flight.setSeatCapacity(50);
 		flight.setDate("14-02-2021");
 		flight.setFare(3000);
-		Mockito.when(dao.existsById(flight.getId())).thenReturn(true);
+		Mockito.when(dao.findFlightById(flight.getId())).thenReturn(flight);
 		assertEquals("Flight with id:"+flight.getId()+"deleted succesfully!", service.deleteFlight(flight.getId()));
 	}
 	
@@ -84,7 +84,7 @@ public class AdminFlightServiceTest {
 		flight.setSeatCapacity(50);
 		flight.setDate("14-02-2021");
 		flight.setFare(3000);
-		Mockito.when(dao.findById(flight.getId())).thenReturn(Optional.of(flight));
+		Mockito.when(dao.findFlightById(flight.getId())).thenReturn(flight);
 		assertThat(service.updateseatCapacity(flight.getId(),flight.getSeatCapacity())).isEqualTo(flight);
 		//Exception exception=assertThrows(FlightNotFoundException.class, () -> service.updateFlight(flight.getFlightId(),flight));
 		//assertEquals("Flight does not exists!", exception.getMessage());

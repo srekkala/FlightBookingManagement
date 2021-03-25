@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +36,7 @@ public class BookingFlightServiceTests {
 		booking.setBookingId("1246");
 		booking.setUserId("SAI");
 		booking.setNoOfPassengers(1);
-		Mockito.when(bookingRepo.findById(booking.getBookingId())).thenReturn(Optional.of(booking));
+		Mockito.when(bookingRepo.findBookingById(booking.getBookingId())).thenReturn(booking);
 		assertThat(service.searchBooking(booking.getBookingId())).isEqualTo(booking);
 
 	}

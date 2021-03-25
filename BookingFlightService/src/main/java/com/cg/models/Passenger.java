@@ -1,13 +1,13 @@
 package com.cg.models;
 
-import javax.persistence.Entity;
+import java.io.Serializable;
+
 import javax.persistence.Id;
-import javax.persistence.Table;
 
+import org.springframework.data.redis.core.RedisHash;
 
-@Entity
-@Table
-public class Passenger {
+@RedisHash("Passenger")
+public class Passenger implements Serializable{
 	
 	@Id
 	private String passengerId;

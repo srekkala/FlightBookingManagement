@@ -19,7 +19,7 @@ public class getFlightByIdDataFetcher implements DataFetcher<Flight>{
 	@Override
 	public Flight get(DataFetchingEnvironment environment) {
 		int id=environment.getArgument("id");
-		return flightRepo.findById(id).get();
+		return flightRepo.findFlightById(id);
 	}
 	
 }

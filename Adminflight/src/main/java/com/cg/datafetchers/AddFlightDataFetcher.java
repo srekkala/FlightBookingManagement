@@ -16,13 +16,14 @@ public class AddFlightDataFetcher implements DataFetcher<Flight> {
 	private AdminFlightRepository flightRepo;
 	@Override
 	public Flight get(DataFetchingEnvironment environment) {
+		int id=environment.getArgument("id");
 		String flightFrom=environment.getArgument("flightFrom");
 		String flightTo=environment.getArgument("flightTo");
 		String date=environment.getArgument("date");
 		int fare=environment.getArgument("fare");
 		int seatCapacity=environment.getArgument("seatCapacity");
-		Flight flight =new Flight(0, flightFrom, flightTo, date, fare, seatCapacity);
-		if (flightRepo.existsById(flight.getId())) {
+		Flight flight =new Flight(id, flightFrom, flightTo, date, fare, seatCapacity);
+		if (flightRepo.findFlightById(flight.getId())!=null) {
 			throw new FlightException("Flight with id: " + flight.getId() + "already available");
 		}
 		flightRepo.save(flight);

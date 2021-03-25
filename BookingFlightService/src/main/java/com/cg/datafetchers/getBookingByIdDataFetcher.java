@@ -21,7 +21,7 @@ public class getBookingByIdDataFetcher implements DataFetcher<Booking>{
 	@Override
 	public Booking get(DataFetchingEnvironment environment) {
 		String bookingId=environment.getArgument("bookingId");
-		Booking booking= bookingRepo.findById(bookingId).get();
+		Booking booking= bookingRepo.findBookingById(bookingId);
 		return booking;
 	}
 

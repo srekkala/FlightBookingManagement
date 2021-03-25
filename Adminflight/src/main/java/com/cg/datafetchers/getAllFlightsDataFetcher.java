@@ -19,6 +19,7 @@ public class getAllFlightsDataFetcher implements DataFetcher<List<Flight>>{
 	
 	@Override
 	public List<Flight> get(DataFetchingEnvironment environment) {
+		System.out.println("from DB");
 		return flightRepo.findAll();
 	}
 

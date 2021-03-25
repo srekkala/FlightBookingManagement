@@ -20,8 +20,8 @@ public class UpdateDataFetcher implements DataFetcher<Flight>{
 	public Flight get(DataFetchingEnvironment environment){
 		int id=environment.getArgument("id");
 		int seatCapacity=environment.getArgument("seatCapacity");
-		if(flightRepo.findById(id) != null) {
-			Flight flightRes=flightRepo.findById(id).get();
+		if(flightRepo.findFlightById(id) != null) {
+			Flight flightRes=flightRepo.findFlightById(id);
 			flightRes.setSeatCapacity(seatCapacity);
 			flightRepo.save(flightRes);
 			return flightRes;

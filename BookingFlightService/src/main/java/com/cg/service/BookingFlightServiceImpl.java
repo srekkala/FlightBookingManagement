@@ -1,7 +1,6 @@
 package com.cg.service;
 
 import java.util.HashMap;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +72,7 @@ public class BookingFlightServiceImpl implements BookingFlightService {
 
 	@Override
 	public Booking searchBooking(String bookingId) {
-		Booking booking = bookingRepo.findById(bookingId).get();
+		Booking booking = bookingRepo.findBookingById(bookingId);
 		return booking;
 	}
 
@@ -85,7 +84,7 @@ public class BookingFlightServiceImpl implements BookingFlightService {
 
 	@Override
 	public List<Passenger> getpassengerByBookingId(String bookingId) {
-		return passengerRepo.findByBookingId(bookingId);
+		return (List<Passenger>) passengerRepo.findByBookingId(bookingId);
 
 	}
 

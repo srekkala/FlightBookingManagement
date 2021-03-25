@@ -44,19 +44,14 @@ public class AddDataFetcher implements DataFetcher<String> {
 						"}\n";
 				HashMap<String,Object> flightRes = flightProxy.getFlight(query1);
 				String flight = flightRes.get("data").toString();
-				System.out.println(flight);
 				int index = flight.lastIndexOf("seatCapacity=");// 90
-				System.out.println(index);
 				int indexx = flight.indexOf(", seatCapacity=");
-				System.out.println(indexx);
 				String seatcapacity = flight.substring(indexx + 15, indexx + 17);
 				System.out.println(seatcapacity);
 				int seats = Integer.parseInt(seatcapacity);
 				System.out.println(seats);
 				System.out.println("after getting flight details from proxy");
 				int seatCapacity = seats - booking.getNoOfPassengers();
-				System.out.println(id);
-				System.out.println(seatCapacity);
 				//Communication Using RestTemplate
 				HttpHeaders headers = new HttpHeaders();
 				headers.add("content-type", "application/json");
@@ -67,9 +62,7 @@ public class AddDataFetcher implements DataFetcher<String> {
 		                "}\n";
 				ResponseEntity<String> response2 = restTemplate.postForEntity(URL, new HttpEntity<>(query2, headers),
 						String.class);
-				System.out.println("The response=================" + response2);
-				bookingRepo.save(booking);
-				return "BookingId is:" + booking.getBookingId();
+				return bookingRepo.save(booking);
 			}
 
 

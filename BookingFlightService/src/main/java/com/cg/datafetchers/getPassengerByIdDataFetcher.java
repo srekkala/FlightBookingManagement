@@ -23,7 +23,7 @@ public class getPassengerByIdDataFetcher implements DataFetcher<List<Passenger>>
 	@Override
 	public List<Passenger> get(DataFetchingEnvironment environment) {
 		String bookingId=environment.getArgument("bookingId");
-		List<Passenger> passenger=passengerRepo.findByBookingId(bookingId);
+		List<Passenger> passenger=(List<Passenger>) passengerRepo.findByBookingId(bookingId);
 		return passenger;
 	}
 	

@@ -1,16 +1,19 @@
 package com.cg.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table
-public class Flight {
+@RedisHash("Flight")
+public class Flight implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	//@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String flightFrom;
 	private String flightTo;

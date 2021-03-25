@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.exceptions.FlightNotFoundException;
+import com.cg.models.Flight;
 import com.cg.repository.AdminFlightRepository;
 
 import graphql.schema.DataFetcher;
@@ -18,10 +19,9 @@ public class DeleteFlightDataFetcher implements DataFetcher<String>{
 	@Override
 	public String get(DataFetchingEnvironment environment) {
 		int id=environment.getArgument("id");
-		Boolean flight=flightRepo.existsById(id);
-		if(flight==true) {
-			flightRepo.deleteById(id);
-			return "Flight with id:"+id+"deleted succesfully!";
+		Flight flight=flightRepo.findFlightById(id);
+		if(flight!=null) {
+			return flightRepo.deleteFlight(id);
 		}
 		else {
 			throw new FlightNotFoundException("FlightId with"+id+"not found!");

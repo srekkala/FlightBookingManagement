@@ -1,12 +1,12 @@
 package com.cg.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table
-public class Booking {
+import org.springframework.data.annotation.Id;
+import java.io.Serializable;
+
+import org.springframework.data.redis.core.RedisHash;
+@RedisHash("Booking")
+public class Booking implements Serializable{
 	@Id
 	private String bookingId;
 	private String userId;
