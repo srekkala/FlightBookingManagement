@@ -9,7 +9,7 @@
 		<version>2.1.2.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.capgemini</groupId>
+	<groupId>com.cg</groupId>
 	<artifactId>ApiGatewayApplication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ApiGatewayApplication</name>

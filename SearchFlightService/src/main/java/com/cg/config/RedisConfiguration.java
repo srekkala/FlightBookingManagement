@@ -16,7 +16,7 @@ public class RedisConfiguration {
 	@Bean
 	public JedisConnectionFactory connectionFactory() {
 		RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration();
-		configuration.setHostName("my-redis.yqlcf3.0001.use2.cache.amazonaws.com");
+		configuration.setHostName("localhost");
 		configuration.setPort(6379);
 		return new JedisConnectionFactory(configuration);
 	}
